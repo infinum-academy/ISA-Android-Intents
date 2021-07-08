@@ -1,11 +1,10 @@
-package com.infinum.isa.intents
+package com.infinum.isa.playground
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.infinum.isa.intents.databinding.ActivityTheOtherBinding
+import com.infinum.isa.playground.databinding.ActivityTheOtherBinding
 
 class TheOtherActivity : AppCompatActivity() {
 

@@ -1,4 +1,4 @@
-package com.infinum.isa.intents
+package com.infinum.isa.playground
 
 import org.junit.Test
 

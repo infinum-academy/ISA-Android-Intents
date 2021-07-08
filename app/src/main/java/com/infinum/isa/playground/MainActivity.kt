@@ -1,13 +1,13 @@
-package com.infinum.isa.intents
+package com.infinum.isa.playground
 
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import com.infinum.isa.intents.databinding.ActivityMainBinding
+import androidx.appcompat.app.AppCompatActivity
+import com.infinum.isa.playground.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         })
 
         binding.explicitIntentButton.setOnClickListener {
-                // TODO: Start explicit intent (but to where? create a new activity!)
+            // TODO: Start explicit intent (but to where? create a new activity!)
             startExplicitIntent()
         }
     }
