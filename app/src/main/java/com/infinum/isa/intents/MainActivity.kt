@@ -7,6 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.core.os.bundleOf
+import androidx.fragment.app.add
+import androidx.fragment.app.commit
 import com.infinum.isa.intents.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -25,6 +28,14 @@ class MainActivity : AppCompatActivity() {
         setAcademyTitle()
         // TODO: Set click listener
         setPressMeClickListener()
+
+        if (savedInstanceState == null) {
+            supportFragmentManager.commit {
+                val bundle = bundleOf("some_int" to 0)
+                setReorderingAllowed(true)
+                add<HomeImageFragment>(R.id.fragment_container_view, args = bundle)
+            }
+        }
     }
 
     private fun setAcademyTitle() {
