@@ -1,4 +1,4 @@
-package com.infinum.isa.playground
+package com.infinum.isa.playground.lectureone
 
 import android.app.Activity
 import android.content.Intent

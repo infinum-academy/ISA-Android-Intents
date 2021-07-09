@@ -1,4 +1,4 @@
-package com.infinum.isa.playground
+package com.infinum.isa.playground.lectureone
 
 import android.content.ActivityNotFoundException
 import android.content.Intent

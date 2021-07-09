@@ -9,9 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
-        <activity android:name="com.infinum.isa.playground.TheOtherActivity">
+        <activity android:name="com.infinum.isa.playground.lectureone.TheOtherActivity">
         </activity>
-        <activity android:name="com.infinum.isa.playground.MainActivity">
+        <activity android:name="com.infinum.isa.playground.lectureone.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
