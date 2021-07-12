@@ -6,10 +6,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.infinum.isa.playground.databinding.ViewSuperheroItemBinding
 import com.infinum.isa.playground.lecturethree.model.Superhero
 
-class SuperheroAdapter(
-    private val items: List<Superhero>,
+class SuperherosAdapter(
+    private var items: List<Superhero>,
     private val onItemClickCallback: (Superhero) -> Unit
-) : RecyclerView.Adapter<SuperheroAdapter.SuperheroViewHolder>() {
+) : RecyclerView.Adapter<SuperherosAdapter.SuperheroViewHolder>() {
 
     /**
      * Called when RecyclerView needs a new ViewHolder to represent an item.
@@ -30,6 +30,16 @@ class SuperheroAdapter(
      */
     override fun onBindViewHolder(holder: SuperheroViewHolder, position: Int) {
         holder.bind(items[position])
+    }
+
+    fun setItems(superheros: List<Superhero>) {
+        items = superheros
+        notifyDataSetChanged()
+    }
+
+    fun addItem(superhero: Superhero) {
+        items = items + superhero
+        notifyItemInserted(items.size)
     }
 
     /**

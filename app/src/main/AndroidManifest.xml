@@ -18,7 +18,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".lectureone.TheOtherActivity">
+        <activity android:name=".lectureone.TheOtherActivity"/>
 
         <activity android:name=".lecturethree.ui.SuperherosActivity"/>
 

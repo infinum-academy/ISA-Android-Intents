@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.infinum.isa.playground.databinding.ActivityTheOtherBinding
+import com.infinum.isa.playground.lecturethree.ui.SuperherosActivity
 
 class TheOtherActivity : AppCompatActivity() {
 
@@ -33,6 +34,8 @@ class TheOtherActivity : AppCompatActivity() {
         val passwordLength = intent.extras?.getInt(EXTRA_PASSWORD_LENGTH)
 
         setData(userName, passwordLength)
+
+        setLectureButtons()
     }
 
     private fun setData(userName: String?, passwordLength: Int?) {
@@ -42,6 +45,12 @@ class TheOtherActivity : AppCompatActivity() {
 
         if (passwordLength != null) {
             binding.passwordLengthLabel.text = "Password length: $passwordLength"
+        }
+    }
+
+    private fun setLectureButtons() {
+        binding.lectureThreeButton.setOnClickListener {
+            startActivity(SuperherosActivity.buildIntent(this))
         }
     }
 }
