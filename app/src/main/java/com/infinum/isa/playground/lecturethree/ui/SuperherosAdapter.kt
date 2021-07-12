@@ -1,7 +1,7 @@
 package com.infinum.isa.playground.lecturethree.ui
 
 // TODO: Adapter with items and on click callback as arguments
-class SuperheroAdapter {
+class SuperherosAdapter {
 
     /**
      * Called when RecyclerView needs a new ViewHolder to represent an item.
@@ -17,6 +17,10 @@ class SuperheroAdapter {
      * Called by the RecyclerView to display the data at the specified position.
      */
     // TODO: On bind view holder
+
+    // TODO: Public fun setItems (with superhero list)
+
+    // TODO: Public fun addItem (with superhero item)
 
     /**
      * Custom-made ViewHolder, used to match the data to the concrete view.

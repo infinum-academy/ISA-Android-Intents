@@ -1,5 +1,7 @@
 package com.infinum.isa.playground.lecturethree.ui
 
+import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -9,6 +11,13 @@ import com.infinum.isa.playground.databinding.ActivitySuperherosBinding
 import com.infinum.isa.playground.lecturethree.model.Superhero
 
 class SuperherosActivity : AppCompatActivity() {
+
+    companion object {
+
+        fun buildIntent(context: Activity): Intent {
+            return Intent(context, SuperherosActivity::class.java)
+        }
+    }
 
     private val superheros = listOf(
         Superhero("Hrvatko", R.drawable.hrvatko),
@@ -32,5 +41,9 @@ class SuperherosActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // TODO: Create recycler view with adapter and layout manager
+
+        // TODO: Connect load items button
+
+        // TODO: Connect add superhero button
     }
 }
