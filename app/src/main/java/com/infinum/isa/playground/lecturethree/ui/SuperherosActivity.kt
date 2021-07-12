@@ -41,9 +41,16 @@ class SuperherosActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // TODO: Create recycler view with adapter and layout manager
+        initRecyclerView()
 
         // TODO: Connect load items button
 
         // TODO: Connect add superhero button
+    }
+
+    private fun initRecyclerView() {
+        binding.superherosRecycler.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+
+
     }
 }

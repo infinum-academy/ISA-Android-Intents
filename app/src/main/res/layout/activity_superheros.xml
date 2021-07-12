@@ -26,7 +26,11 @@
         android:text="Add new superhero"
         app:cornerRadius="40dp"/>
 
-    <!-- TODO: Create a RecyclerView  -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/superherosRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/view_superhero_item"/>
 
     <!-- TODO: Create empty state text -->
 
