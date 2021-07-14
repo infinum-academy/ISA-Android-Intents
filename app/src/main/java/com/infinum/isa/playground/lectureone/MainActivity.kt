@@ -11,20 +11,20 @@ import com.infinum.isa.playground.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    // TODO: Define binding variable
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // TODO: Inflate binding
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // TODO: Set text
         setAcademyTitle()
-        // TODO: Set click listener
         setPressMeClickListener()
+
+        // TODO Commit new fragment here
+
+        // TODO Send and toas some random argument
     }
 
     private fun setAcademyTitle() {
@@ -34,13 +34,11 @@ class MainActivity : AppCompatActivity() {
     private fun setPressMeClickListener() {
         binding.implicitIntentButton.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
-                // TODO: Do something implicit
                 startValidUrlIntent()
             }
         })
 
         binding.explicitIntentButton.setOnClickListener {
-            // TODO: Start explicit intent (but to where? create a new activity!)
             startExplicitIntent()
         }
     }
