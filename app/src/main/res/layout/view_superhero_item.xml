@@ -25,6 +25,12 @@
                 android:scaleType="fitCenter"
                 tools:src="@drawable/hrvatko"/>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="bottom"
+                android:background="@android:color/holo_orange_dark"/>
+
             <TextView
                 android:id="@+id/superheroName"
                 android:layout_width="match_parent"
@@ -34,7 +40,6 @@
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:background="@android:color/holo_orange_dark"
                 tools:text="Superman"/>
 
         </FrameLayout>

@@ -2,12 +2,16 @@ package com.infinum.isa.playground.lecturethree.ui
 
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.infinum.isa.playground.R
 import com.infinum.isa.playground.databinding.ActivitySuperherosBinding
+import com.infinum.isa.playground.databinding.DialogAddSuperheroBinding
 import com.infinum.isa.playground.lecturethree.model.Superhero
 
 class SuperherosActivity : AppCompatActivity() {
@@ -34,23 +38,60 @@ class SuperherosActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySuperherosBinding
 
+    private var superherosAdapter: SuperherosAdapter? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivitySuperherosBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // TODO: Create recycler view with adapter and layout manager
-        initRecyclerView()
+        initSuperherosRecycler()
 
-        // TODO: Connect load items button
-
-        // TODO: Connect add superhero button
+        initLoadItemsButton()
+        initAddSuperheroButton()
     }
 
-    private fun initRecyclerView() {
-        binding.superherosRecycler.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+    private fun initSuperherosRecycler() {
+        superherosAdapter = SuperherosAdapter(emptyList()) { item ->
+            Toast.makeText(this, item.name, Toast.LENGTH_SHORT).show()
+        }
 
+        binding.superherosRecyclerView.layoutManager = LinearLayoutManager(this)
+        binding.superherosRecyclerView.adapter = superherosAdapter
 
+        binding.superherosRecyclerView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
+    }
+
+    private fun initLoadItemsButton() {
+        binding.loadItemsButton.setOnClickListener {
+            superherosAdapter?.setItems(superheros)
+            binding.emptyStateLabel.isVisible = false
+            binding.superherosRecyclerView.isVisible = true
+        }
+    }
+
+    private fun initAddSuperheroButton() {
+        binding.addSuperheroButton.setOnClickListener {
+            showAddSuperheroBottomSheet()
+        }
+    }
+
+    private fun showAddSuperheroBottomSheet() {
+        val dialog = BottomSheetDialog(this)
+
+        val bottomSheetBinding = DialogAddSuperheroBinding.inflate(layoutInflater)
+        dialog.setContentView(bottomSheetBinding.root)
+
+        bottomSheetBinding.confirmButton.setOnClickListener {
+            addSuperheroToList(bottomSheetBinding.nameInput.text.toString())
+            dialog.dismiss()
+        }
+
+        dialog.show()
+    }
+
+    private fun addSuperheroToList(name: String) {
+        superherosAdapter?.addItem(Superhero(name, R.drawable.ic_placeholder))
     }
 }

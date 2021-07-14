@@ -6,20 +6,23 @@ import androidx.recyclerview.widget.RecyclerView
 import com.infinum.isa.playground.databinding.ViewSuperheroItemBinding
 import com.infinum.isa.playground.lecturethree.model.Superhero
 
-// TODO: Adapter with items and on click callback as arguments
 class SuperherosAdapter(
     private var items: List<Superhero>,
-    private val onClickCallback: (String) -> Unit
+    private val onItemClickCallback: (Superhero) -> Unit
 ) : RecyclerView.Adapter<SuperherosAdapter.SuperheroViewHolder>() {
 
     /**
      * Called when RecyclerView needs a new ViewHolder to represent an item.
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SuperheroViewHolder {
+        // Create a view from
         val binding = ViewSuperheroItemBinding.inflate(LayoutInflater.from(parent.context))
-        val holder = SuperheroViewHolder(binding)
+        // Create a ViewHolder with that view
+        return SuperheroViewHolder(binding)
+    }
 
-        return holder
+    override fun getItemCount(): Int {
+        return items.size
     }
 
     /**
@@ -29,31 +32,30 @@ class SuperherosAdapter(
         holder.bind(items[position])
     }
 
-    /**
-     * Returns the total number of items that can be shown.
-     */
-    override fun getItemCount(): Int {
-        return items.size
+    fun setItems(superheros: List<Superhero>) {
+        items = superheros
+        notifyDataSetChanged()
     }
 
-
-    // TODO: Public fun setItems (with superhero list)
-
-    // TODO: Public fun addItem (with superhero item)
+    fun addItem(superhero: Superhero) {
+        items = items + superhero
+        notifyItemInserted(items.size)
+    }
 
     /**
      * Custom-made ViewHolder, used to match the data to the concrete view.
      */
-    // TODO: View holder with binding as argument
     inner class SuperheroViewHolder(private val binding: ViewSuperheroItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: Superhero) {
-            binding.superheroName.text = item.name
-
+            // Load the image
             binding.superheroImage.setImageResource(item.imageResourceId)
 
+            // Load the name
+            binding.superheroName.text = item.name
+
             binding.root.setOnClickListener {
-                onClickCallback(item.name)
+                onItemClickCallback(item)
             }
         }
     }
