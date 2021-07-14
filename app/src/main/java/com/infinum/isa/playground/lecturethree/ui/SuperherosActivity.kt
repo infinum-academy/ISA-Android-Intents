@@ -40,6 +40,8 @@ class SuperherosActivity : AppCompatActivity() {
 
     private var superherosAdapter: SuperherosAdapter? = null
 
+    // TODO Instanciraj VM ovdje
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -47,6 +49,8 @@ class SuperherosActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         initSuperherosRecycler()
+
+        // TODO "osluškuj" promjene u listi superheroja iz VMa
 
         initLoadItemsButton()
         initAddSuperheroButton()
@@ -64,6 +68,7 @@ class SuperherosActivity : AppCompatActivity() {
     }
 
     private fun initLoadItemsButton() {
+        // TODO nek ova funkcija prima listu superheroja umjesto da su zahardkodirani
         binding.loadItemsButton.setOnClickListener {
             superherosAdapter?.setItems(superheros)
             binding.emptyStateLabel.isVisible = false
@@ -92,6 +97,9 @@ class SuperherosActivity : AppCompatActivity() {
     }
 
     private fun addSuperheroToList(name: String) {
+        // TODO pozovi VM da doda novog superheroja i azurira listu
+        // TODO u observe funkciji dodaj provjeru imamo li vec listu superheroja i ako imamo dodaj novog koristeći ovu funkciju ispod
+        // TODO testiraj orientation change
         superherosAdapter?.addItem(Superhero(name, R.drawable.ic_placeholder))
     }
 }
