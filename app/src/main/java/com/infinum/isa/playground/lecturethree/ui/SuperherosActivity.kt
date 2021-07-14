@@ -97,8 +97,7 @@ class SuperherosActivity : AppCompatActivity() {
     }
 
     private fun addSuperheroToList(name: String) {
-        // TODO pozovi VM da doda novog superheroja i azurira listu
-        // TODO u observe funkciji dodaj provjeru imamo li vec listu superheroja i ako imamo dodaj novog koristeći ovu funkciju ispod
+        // TODO zakomentiraj ovu ispod funkciju i pozovi VM da doda novog superheroja i azurira listu
         // TODO testiraj orientation change
         superherosAdapter?.addItem(Superhero(name, R.drawable.ic_placeholder))
     }
