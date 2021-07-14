@@ -26,12 +26,7 @@ class SecondFragment : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding.root.setOnClickListener {
-            findNavController().navigate(R.id.action_second_to_third)
-        }
-    }
+    // TODO add click listener that navigates to third fragment
 
     override fun onDestroyView() {
         super.onDestroyView()
