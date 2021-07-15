@@ -4,8 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.infinum.isa.playground.R
 import com.infinum.isa.playground.databinding.FragmentFirstBinding
 import com.infinum.isa.playground.databinding.FragmentSecondBinding
@@ -17,6 +20,8 @@ class SecondFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
+    val args: SecondFragmentArgs by navArgs()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -26,7 +31,14 @@ class SecondFragment : Fragment() {
         return binding.root
     }
 
-    // TODO add click listener that navigates to third fragment
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.root.setOnClickListener {
+            findNavController().navigate(R.id.action_second_to_third)
+        }
+        binding.test.doOnTextChanged { text, start, before, count ->  }
+        Toast.makeText(context, "Poslani broj je ${args.myArg}", Toast.LENGTH_SHORT).show()
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -9,11 +9,11 @@
     android:gravity="center"
     tools:context=".lectureone.MainActivity">
 
-    <!--    TODO replace this image with fragment using FragmentContainerView-->
-    <ImageView
-        android:layout_width="160dp"
-        android:layout_height="160dp"
-        android:src="@drawable/severina"/>
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_container_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
 
     <TextView
         android:id="@+id/helloLabel"

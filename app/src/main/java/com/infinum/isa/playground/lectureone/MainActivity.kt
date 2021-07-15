@@ -7,7 +7,12 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
+import androidx.fragment.app.add
+import androidx.fragment.app.commit
+import com.infinum.isa.playground.R
 import com.infinum.isa.playground.databinding.ActivityMainBinding
+import com.infinum.isa.playground.lecturefour.HomeHeaderFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,9 +27,12 @@ class MainActivity : AppCompatActivity() {
         setAcademyTitle()
         setPressMeClickListener()
 
-        // TODO Commit new fragment here
-
-        // TODO Send and toas some random argument
+        if (savedInstanceState == null) {
+            supportFragmentManager.commit {
+                val bundle = bundleOf("someInt" to 8)
+                add<HomeHeaderFragment>(R.id.fragment_container_view, args = bundle)
+            }
+        }
     }
 
     private fun setAcademyTitle() {

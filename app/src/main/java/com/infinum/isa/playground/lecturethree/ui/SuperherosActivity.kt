@@ -12,6 +12,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.infinum.isa.playground.R
 import com.infinum.isa.playground.databinding.ActivitySuperherosBinding
 import com.infinum.isa.playground.databinding.DialogAddSuperheroBinding
+import com.infinum.isa.playground.lecturefour.SuperheroesResource
 import com.infinum.isa.playground.lecturethree.model.Superhero
 
 class SuperherosActivity : AppCompatActivity() {
@@ -22,19 +23,6 @@ class SuperherosActivity : AppCompatActivity() {
             return Intent(context, SuperherosActivity::class.java)
         }
     }
-
-    private val superheros = listOf(
-        Superhero("Hrvatko", R.drawable.hrvatko),
-        Superhero("Captain Marvel", R.drawable.captain_marvel),
-        Superhero("Wonder Woman", R.drawable.wonder_woman),
-        Superhero("Cat woman", R.drawable.cat_woman),
-        Superhero("Flash", R.drawable.flash),
-        Superhero("Hulk", R.drawable.hulk),
-        Superhero("Ironman", R.drawable.iron_man),
-        Superhero("Spiderman", R.drawable.spiderman),
-        Superhero("Superman", R.drawable.superman),
-        Superhero("TMNT", R.drawable.tmnt)
-    )
 
     private lateinit var binding: ActivitySuperherosBinding
 
@@ -70,7 +58,7 @@ class SuperherosActivity : AppCompatActivity() {
     private fun initLoadItemsButton() {
         // TODO nek ova funkcija prima listu superheroja umjesto da su zahardkodirani
         binding.loadItemsButton.setOnClickListener {
-            superherosAdapter?.setItems(superheros)
+            superherosAdapter?.setItems(SuperheroesResource.superheros)
             binding.emptyStateLabel.isVisible = false
             binding.superherosRecyclerView.isVisible = true
         }
