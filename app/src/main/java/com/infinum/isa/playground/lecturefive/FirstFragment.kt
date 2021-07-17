@@ -1,5 +1,6 @@
-package com.infinum.isa.playground.lecturefour
+package com.infinum.isa.playground.lecturefive
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.infinum.isa.playground.R
 import com.infinum.isa.playground.databinding.FragmentFirstBinding
 
 class FirstFragment : Fragment() {
@@ -21,17 +21,24 @@ class FirstFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.root.setOnClickListener {
-            val action = FirstFragmentDirections.actionFirstToSecond(9)
-            findNavController().navigate(action)
+        //TODO Add action from 1 to 3 in graph and attach it to click listener
+        binding.goToTwoButton.setOnClickListener {
+            navigateToSecondFragment()
         }
+
+        //TODO Implement a check if we can automatically navigate forward
+    }
+
+    private fun navigateToSecondFragment() {
+        val action = FirstFragmentDirections.actionFirstToSecond(9)
+        findNavController().navigate(action)
     }
 
     override fun onDestroyView() {

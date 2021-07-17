@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/first"
-        android:name="com.infinum.isa.playground.lecturefour.FirstFragment"
+        android:name="com.infinum.isa.playground.lecturefive.FirstFragment"
         tools:layout="@layout/fragment_first">
 
         <action
@@ -16,7 +16,7 @@
 
     <fragment
         android:id="@+id/second"
-        android:name="com.infinum.isa.playground.lecturefour.SecondFragment"
+        android:name="com.infinum.isa.playground.lecturefive.SecondFragment"
         tools:layout="@layout/fragment_second">
 
         <argument

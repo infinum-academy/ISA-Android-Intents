@@ -1,5 +1,6 @@
-package com.infinum.isa.playground.lecturefour
+package com.infinum.isa.playground.lecturefive
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +11,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.infinum.isa.playground.R
-import com.infinum.isa.playground.databinding.FragmentFirstBinding
 import com.infinum.isa.playground.databinding.FragmentSecondBinding
 
 class SecondFragment : Fragment() {
@@ -26,7 +26,7 @@ class SecondFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -36,8 +36,13 @@ class SecondFragment : Fragment() {
         binding.root.setOnClickListener {
             findNavController().navigate(R.id.action_second_to_third)
         }
-        binding.test.doOnTextChanged { text, start, before, count ->  }
         Toast.makeText(context, "Poslani broj je ${args.myArg}", Toast.LENGTH_SHORT).show()
+
+        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
+        with (sharedPref.edit()) {
+            putBoolean("vec sam na drugom fragmentu", true)
+            apply()
+        }
     }
 
     override fun onDestroyView() {
