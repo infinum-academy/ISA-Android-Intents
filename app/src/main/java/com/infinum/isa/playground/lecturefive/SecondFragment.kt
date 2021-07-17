@@ -1,5 +1,7 @@
 package com.infinum.isa.playground.lecturefive
 
+import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,6 +12,7 @@ import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.android.gms.location.LocationServices
 import com.infinum.isa.playground.R
 import com.infinum.isa.playground.databinding.FragmentSecondBinding
 
@@ -21,6 +24,9 @@ class SecondFragment : Fragment() {
     private val binding get() = _binding!!
 
     val args: SecondFragmentArgs by navArgs()
+
+    // TODO Create needed permission contract, also add permission to manifest
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,6 +48,19 @@ class SecondFragment : Fragment() {
         with (sharedPref.edit()) {
             putBoolean("vec sam na drugom fragmentu", true)
             apply()
+        }
+
+        //TODO Ask for permission to show current coordinates
+    }
+
+    /**
+     * Ovdje smo suppresali warning od android studia jer garantiramo da će se
+     * permission provjeriti preko [locationPermissionForCoordinates]
+     */
+    @SuppressLint("MissingPermission")
+    private fun showCoordinates() {
+        LocationServices.getFusedLocationProviderClient(activity).lastLocation.addOnSuccessListener {
+            binding.coordinates.text = getString(R.string.coordinates).format(it.latitude, it.longitude)
         }
     }
 
