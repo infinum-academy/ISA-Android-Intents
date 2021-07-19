@@ -26,7 +26,9 @@ class SecondFragment : Fragment() {
     val args: SecondFragmentArgs by navArgs()
 
     // TODO Create needed permission contract, also add permission to manifest
-
+    private val locationPermissionForCoordinates = preparePrmissionsContract(onPermissionsGranted = {
+        showCoordinates()
+    })
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -50,6 +52,7 @@ class SecondFragment : Fragment() {
         }
 
         //TODO Ask for permission to show current coordinates
+        locationPermissionForCoordinates.launch(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION))
     }
 
     /**

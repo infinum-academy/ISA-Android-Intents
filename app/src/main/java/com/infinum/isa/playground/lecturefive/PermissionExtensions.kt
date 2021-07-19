@@ -10,6 +10,22 @@ import com.google.android.material.snackbar.Snackbar
 import com.infinum.isa.playground.R
 
 //TODO create extension for requesting permissions
+fun Fragment.preparePrmissionsContract(
+    onPermissionsGranted: () -> Unit,
+    onPermissionsDenied: () -> Unit = {
+        activity?.let {
+            showPermissionsDeniedSnackbar(it)
+        }
+    }
+) = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissionsMap ->
+    permissionsMap.entries.forEach {
+        if (it.value) {
+            onPermissionsGranted()
+        } else {
+            onPermissionsDenied()
+        }
+    }
+}
 
 /**
  * Displays the default Snackbar with Action to open the Application Details
