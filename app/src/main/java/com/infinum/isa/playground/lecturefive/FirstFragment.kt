@@ -1,5 +1,6 @@
 package com.infinum.isa.playground.lecturefive
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -33,6 +34,11 @@ class FirstFragment : Fragment() {
         }
 
         //TODO Implement a check if we can automatically navigate forward
+        val prefs = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
+        val alreadySeenFragmentTwo = prefs.getBoolean("vec sam na drugom fragmentu", false)
+        if (alreadySeenFragmentTwo) {
+            navigateToSecondFragment()
+        }
     }
 
     private fun navigateToSecondFragment() {

@@ -10,16 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity android:name=".lecturefour.NavigationActivity">
-        </activity>
-        <activity android:name=".lectureone.MainActivity">
-        </activity>
-        <activity android:name=".lectureone.TheOtherActivity"/>
-        <activity android:name=".lecturethree.ui.SuperherosActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <activity android:name=".lectureone.MainActivity">
+        </activity>
+        <activity android:name=".lectureone.TheOtherActivity"/>
+        <activity android:name=".lecturethree.ui.SuperherosActivity">
         </activity>
     </application>
 
