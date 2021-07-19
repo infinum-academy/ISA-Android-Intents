@@ -42,7 +42,6 @@ class SecondFragment : Fragment() {
         binding.root.setOnClickListener {
             findNavController().navigate(R.id.action_second_to_third)
         }
-        Toast.makeText(context, "Poslani broj je ${args.myArg}", Toast.LENGTH_SHORT).show()
 
         val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
         with (sharedPref.edit()) {
