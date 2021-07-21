@@ -21,9 +21,9 @@ class RegistrationViewModel : ViewModel() {
     }
 
     fun register(username: String, password: String) {
-        ApiModule.retrofit.register(RegisterRequest(username, password, password)).enqueue(object : Callback<RegisterResponse> {
+        ApiModule.getRetrofit().register(RegisterRequest(username, password, password)).enqueue(object : Callback<RegisterResponse> {
             override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
-                registrationResultLiveData.value = true
+                registrationResultLiveData.value = response.isSuccessful
             }
 
             override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
