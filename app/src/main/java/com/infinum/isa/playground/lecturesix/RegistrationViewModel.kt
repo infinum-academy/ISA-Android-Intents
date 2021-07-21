@@ -3,14 +3,6 @@ package com.infinum.isa.playground.lecturesix
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.infinum.isa.playground.R
-import com.infinum.isa.playground.lecturesix.models.RegisterRequest
-import com.infinum.isa.playground.lecturesix.models.RegisterResponse
-import com.infinum.isa.playground.lecturesix.networking.ApiModule
-import com.infinum.isa.playground.lecturethree.model.Superhero
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class RegistrationViewModel : ViewModel() {
 
@@ -21,15 +13,7 @@ class RegistrationViewModel : ViewModel() {
     }
 
     fun register(username: String, password: String) {
-        ApiModule.retrofit.register(RegisterRequest(username, password, password)).enqueue(object : Callback<RegisterResponse> {
-            override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
-                registrationResultLiveData.value = response.isSuccessful
-                //TODO show how to save headers in prefs
-            }
-
-            override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
-                registrationResultLiveData.value = false
-            }
-        })
+        registrationResultLiveData.value = true
+        //TODO implement call
     }
 }
