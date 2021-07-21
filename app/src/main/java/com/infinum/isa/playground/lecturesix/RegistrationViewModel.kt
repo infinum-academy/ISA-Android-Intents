@@ -21,9 +21,10 @@ class RegistrationViewModel : ViewModel() {
     }
 
     fun register(username: String, password: String) {
-        ApiModule.getRetrofit().register(RegisterRequest(username, password, password)).enqueue(object : Callback<RegisterResponse> {
+        ApiModule.retrofit.register(RegisterRequest(username, password, password)).enqueue(object : Callback<RegisterResponse> {
             override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
                 registrationResultLiveData.value = response.isSuccessful
+                //TODO show how to save headers in prefs
             }
 
             override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
