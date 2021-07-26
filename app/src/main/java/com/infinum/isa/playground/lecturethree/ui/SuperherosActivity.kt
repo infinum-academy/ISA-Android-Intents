@@ -10,10 +10,12 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.infinum.isa.playground.PlaygroundApp
 import com.infinum.isa.playground.R
 import com.infinum.isa.playground.databinding.ActivitySuperherosBinding
 import com.infinum.isa.playground.databinding.DialogAddSuperheroBinding
 import com.infinum.isa.playground.lecturefive.SuperheroesViewModel
+import com.infinum.isa.playground.lectureseven.SuperheroViewModelFactory
 import com.infinum.isa.playground.lecturethree.model.Superhero
 
 class SuperherosActivity : AppCompatActivity() {
@@ -29,7 +31,9 @@ class SuperherosActivity : AppCompatActivity() {
 
     private var superherosAdapter: SuperherosAdapter? = null
 
-    private val viewModel: SuperheroesViewModel by viewModels()
+    private val viewModel: SuperheroesViewModel by viewModels {
+        SuperheroViewModelFactory((application as PlaygroundApp).superheroesDatabase)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,8 +43,8 @@ class SuperherosActivity : AppCompatActivity() {
 
         initSuperherosRecycler()
 
-        viewModel.getSuperheroesLiveData().observe(this, { superheroes ->
-            updateItems(superheroes)
+        viewModel.getAllSuperheroes().observe(this, { superheroes ->
+            updateItems(superheroes.map { Superhero(it.name, it.imageResourceId) })
         })
 
         binding.loadItemsButton.setOnClickListener {

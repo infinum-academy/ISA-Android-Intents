@@ -1,11 +1,13 @@
 package com.infinum.isa.playground.lectureseven
 
 import androidx.annotation.DrawableRes
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
-//TODO: Define entity
+@Entity(tableName = "superhero")
 data class SuperheroEntity(
-    // TODO: Add column info and primary key
-    val id: String,
-    val name: String,
-    @DrawableRes val imageResourceId: Int
+    @PrimaryKey @ColumnInfo(name = "id") val id: String,
+    @ColumnInfo(name = "name") val name: String,
+    @ColumnInfo(name = "image") @DrawableRes val imageResourceId: Int
 )

@@ -1,14 +1,21 @@
 package com.infinum.isa.playground.lectureseven
 
-// TODO: Define DAO
+import androidx.lifecycle.LiveData
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import com.infinum.isa.playground.lecturethree.model.Superhero
+
+@Dao
 interface SuperheroDao {
 
-    // TODO: Define get all superheros method
-    fun getAllSuperheroes()
+    @Query("SELECT * FROM superhero")
+    fun getAllSuperheroes() : LiveData<List<SuperheroEntity>>
 
-    // TODO: Define get single superhero method
-    fun getSuperhero()
+    @Query("SELECT * FROM superhero WHERE id IS :superheroId")
+    fun getSuperhero(superheroId: String) : LiveData<SuperheroEntity>
 
-    // TODO: Define insert all superheros method
-    fun insertAllSuperheroes()
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertAllSuperheroes(superheroes: List<SuperheroEntity>)
 }
