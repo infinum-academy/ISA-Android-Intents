@@ -29,7 +29,6 @@ class SuperherosActivity : AppCompatActivity() {
 
     private var superherosAdapter: SuperherosAdapter? = null
 
-    // TODO Instanciraj VM ovdje
     private val viewModel: SuperheroesViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +39,6 @@ class SuperherosActivity : AppCompatActivity() {
 
         initSuperherosRecycler()
 
-        // TODO "osluškuj" promjene u listi superheroja iz VMa
         viewModel.getSuperheroesLiveData().observe(this, { superheroes ->
             updateItems(superheroes)
         })
@@ -64,7 +62,6 @@ class SuperherosActivity : AppCompatActivity() {
     }
 
     private fun updateItems(superheros: List<Superhero>) {
-        // TODO nek ova funkcija prima listu superheroja umjesto da su zahardkodirani
         superherosAdapter?.setItems(superheros)
         binding.emptyStateLabel.isVisible = false
         binding.superherosRecyclerView.isVisible = true
@@ -92,8 +89,6 @@ class SuperherosActivity : AppCompatActivity() {
 
     private fun addSuperheroToList(name: String) {
         viewModel.addSuperhero(Superhero(name, R.drawable.ic_placeholder))
-        // TODO zakomentiraj ovu ispod funkciju i pozovi VM da doda novog superheroja i azurira listu
-        // TODO testiraj orientation change
 //        superherosAdapter?.addItem(Superhero(name, R.drawable.ic_placeholder))
     }
 }
