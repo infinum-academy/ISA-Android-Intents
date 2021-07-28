@@ -47,10 +47,6 @@ class SuperherosActivity : AppCompatActivity() {
             updateItems(superheroes.map { Superhero(it.name, it.imageResourceId) })
         })
 
-        binding.loadItemsButton.setOnClickListener {
-            viewModel.initSuperheroes()
-        }
-
         initAddSuperheroButton()
     }
 

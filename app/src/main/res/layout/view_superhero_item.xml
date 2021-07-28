@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- TODO: Convert to merge tag -->
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,6 +8,7 @@
     android:layout_height="250dp"
     android:padding="8dp"
     android:clipToPadding="false">
+    <!-- TODO: Add parent tag attribute -->
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -33,7 +35,7 @@
 
             <TextView
                 android:id="@+id/superheroName"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:padding="16dp"
