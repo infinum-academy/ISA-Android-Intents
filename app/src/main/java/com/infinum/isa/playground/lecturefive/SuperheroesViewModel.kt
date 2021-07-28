@@ -3,38 +3,26 @@ package com.infinum.isa.playground.lecturefive
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.infinum.isa.playground.PlaygroundApp
 import com.infinum.isa.playground.R
+import com.infinum.isa.playground.lectureseven.SuperheroEntity
+import com.infinum.isa.playground.lectureseven.SuperheroesDatabase
 import com.infinum.isa.playground.lecturethree.model.Superhero
+import java.util.concurrent.Executors
 
-class SuperheroesViewModel : ViewModel() {
+class SuperheroesViewModel(
+    val database: SuperheroesDatabase
+) : ViewModel() {
 
-    private val superheros = mutableListOf(
-        Superhero("Hrvatko", R.drawable.hrvatko),
-        Superhero("Captain Marvel", R.drawable.captain_marvel),
-        Superhero("Wonder Woman", R.drawable.wonder_woman),
-        Superhero("Cat woman", R.drawable.cat_woman),
-        Superhero("Flash", R.drawable.flash),
-        Superhero("Hulk", R.drawable.hulk),
-        Superhero("Ironman", R.drawable.iron_man),
-        Superhero("Spiderman", R.drawable.spiderman),
-        Superhero("Superman", R.drawable.superman),
-        Superhero("TMNT", R.drawable.tmnt)
-    )
-
-    private val superherosLiveData: MutableLiveData<List<Superhero>> by lazy {
-        MutableLiveData<List<Superhero>>()
-    }
-
-    fun getSuperheroesLiveData(): LiveData<List<Superhero>> {
-        return superherosLiveData
-    }
-
-    fun initSuperheroes() {
-        superherosLiveData.value = superheros
+    fun getAllSuperheroes(): LiveData<List<SuperheroEntity>> {
+        return database.superheroDao().getAllSuperheroes()
     }
 
     fun addSuperhero(superhero: Superhero) {
-        superheros.add(superhero)
-        superherosLiveData.value = superheros
+        Executors.newSingleThreadExecutor().execute {
+            database.superheroDao().insertAllSuperheroes(
+                listOf(SuperheroEntity("123", superhero.name, superhero.imageResourceId))
+            )
+        }
     }
 }
