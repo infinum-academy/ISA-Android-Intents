@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- TODO: Convert to merge tag -->
-<FrameLayout
+<merge
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="250dp"
-    android:padding="8dp"
-    android:clipToPadding="false">
-    <!-- TODO: Add parent tag attribute -->
+    tools:parentTag="android.widget.FrameLayout">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -25,7 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitCenter"
-                tools:src="@drawable/hrvatko"/>
+                android:src="@drawable/hrvatko"/>
 
             <View
                 android:layout_width="match_parent"
@@ -42,10 +39,10 @@
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                tools:text="Superman"/>
+                android:text="Superman"/>
 
         </FrameLayout>
 
     </androidx.cardview.widget.CardView>
 
-</FrameLayout>
+</merge>

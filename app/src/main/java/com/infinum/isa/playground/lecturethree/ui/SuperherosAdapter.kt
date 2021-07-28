@@ -16,7 +16,7 @@ class SuperherosAdapter(
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SuperheroViewHolder {
         // Create a view from
-        val binding = ViewSuperheroItemBinding.inflate(LayoutInflater.from(parent.context))
+        val binding = ViewSuperheroItemBinding.inflate(LayoutInflater.from(parent.context), parent)
         // Create a ViewHolder with that view
         return SuperheroViewHolder(binding)
     }
