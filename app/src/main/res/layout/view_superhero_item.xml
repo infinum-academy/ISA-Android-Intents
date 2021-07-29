@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<merge
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="250dp"
-    android:padding="8dp"
-    android:clipToPadding="false">
+    tools:parentTag="android.widget.FrameLayout">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -23,7 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitCenter"
-                tools:src="@drawable/hrvatko"/>
+                android:src="@drawable/hrvatko"/>
 
             <View
                 android:layout_width="match_parent"
@@ -33,17 +32,17 @@
 
             <TextView
                 android:id="@+id/superheroName"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:padding="16dp"
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                tools:text="Superman"/>
+                android:text="Superman"/>
 
         </FrameLayout>
 
     </androidx.cardview.widget.CardView>
 
-</FrameLayout>
+</merge>

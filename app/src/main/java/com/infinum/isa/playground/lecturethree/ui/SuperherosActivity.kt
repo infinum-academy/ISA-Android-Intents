@@ -41,35 +41,42 @@ class SuperherosActivity : AppCompatActivity() {
         binding = ActivitySuperherosBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        initSuperherosRecycler()
+//        initSuperherosRecycler()
 
         viewModel.getAllSuperheroes().observe(this, { superheroes ->
-            updateItems(superheroes.map { Superhero(it.name, it.imageResourceId) })
+//            updateItems(superheroes.map { Superhero(it.name, it.imageResourceId) })
         })
 
-        binding.loadItemsButton.setOnClickListener {
-            viewModel.initSuperheroes()
-        }
-
         initAddSuperheroButton()
-    }
 
-    private fun initSuperherosRecycler() {
-        superherosAdapter = SuperherosAdapter(emptyList()) { item ->
-            Toast.makeText(this, item.name, Toast.LENGTH_SHORT).show()
+        initSuperheroCardContent()
+
+        binding.loadItemsButton.setOnClickListener {
+            binding.superheroCard.animateTitle()
         }
-
-        binding.superherosRecyclerView.layoutManager = LinearLayoutManager(this)
-        binding.superherosRecyclerView.adapter = superherosAdapter
-
-        binding.superherosRecyclerView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
     }
 
-    private fun updateItems(superheros: List<Superhero>) {
-        superherosAdapter?.setItems(superheros)
-        binding.emptyStateLabel.isVisible = false
-        binding.superherosRecyclerView.isVisible = true
+    private fun initSuperheroCardContent() {
+        binding.superheroCard.setTitle("Hrvatko je pobjednik")
+        binding.superheroCard.setImage(R.drawable.hrvatko)
     }
+
+//    private fun initSuperherosRecycler() {
+//        superherosAdapter = SuperherosAdapter(emptyList()) { item ->
+//            Toast.makeText(this, item.name, Toast.LENGTH_SHORT).show()
+//        }
+//
+//        binding.superherosRecyclerView.layoutManager = LinearLayoutManager(this)
+//        binding.superherosRecyclerView.adapter = superherosAdapter
+//
+//        binding.superherosRecyclerView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
+//    }
+//
+//    private fun updateItems(superheros: List<Superhero>) {
+//        superherosAdapter?.setItems(superheros)
+//        binding.emptyStateLabel.isVisible = false
+//        binding.superherosRecyclerView.isVisible = true
+//    }
 
     private fun initAddSuperheroButton() {
         binding.addSuperheroButton.setOnClickListener {

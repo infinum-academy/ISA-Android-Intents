@@ -26,12 +26,10 @@
         android:text="Add new superhero"
         app:cornerRadius="40dp"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/superherosRecyclerView"
+    <com.infinum.isa.playground.lectureeight.SuperheroCardView
+        android:id="@+id/superheroCard"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        tools:listitem="@layout/view_superhero_item"/>
+        android:layout_height="wrap_content"/>
 
     <TextView
         android:id="@+id/emptyStateLabel"
